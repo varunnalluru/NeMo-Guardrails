@@ -347,6 +347,7 @@ def _join_config(dest_config: dict, additional_config: dict):
         "core",
         "rails",
         "streaming",
+        "raw_llm_call_action",
         "passthrough",
     ]
 
@@ -451,6 +452,11 @@ class RailsConfig(BaseModel):
     streaming: bool = Field(
         default=False,
         description="Whether this configuration should use streaming mode or not.",
+    )
+
+    raw_llm_call_action: Optional[str] = Field(
+        default="raw llm call",
+        description="The name of the action that would execute the original raw LLM call. ",
     )
 
     passthrough: bool = Field(
